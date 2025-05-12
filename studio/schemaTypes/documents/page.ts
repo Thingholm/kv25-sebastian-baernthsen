@@ -1,10 +1,13 @@
 import { defineField, defineType } from "sanity";
 import { defaultFieldGroups } from "../config/fieldGroups";
+import { DocumentIcon } from '@sanity/icons';
+
 
 export default defineType({
     name: 'page',
     title: 'Pages',
     type: 'document',
+    icon: DocumentIcon,
     groups: defaultFieldGroups,
     fields: [
         defineField({
