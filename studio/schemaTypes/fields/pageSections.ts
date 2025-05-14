@@ -1,7 +1,11 @@
 import { defineArrayMember, defineField } from "sanity";
 import hero from "../objects/sections/hero";
+import mediaTextBlock from "../objects/sections/mediaTextBlock";
 
-const pageSectionsObjects = [hero];
+const pageSectionsObjects = [
+    hero,
+    mediaTextBlock,
+];
 
 export default defineField({
     name: "pageSections",

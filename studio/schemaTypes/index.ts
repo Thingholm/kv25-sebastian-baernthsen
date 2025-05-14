@@ -4,6 +4,7 @@ import button from "./objects/button";
 import link from "./objects/link";
 import menuItem from "./objects/menuItem";
 import hero from "./objects/sections/hero";
+import mediaTextBlock from "./objects/sections/mediaTextBlock";
 import homePage from "./singletons/homePage";
 import settings from "./singletons/settings";
 
@@ -19,6 +20,7 @@ export const schemaTypes = [
 
     // sections
     hero,
+    mediaTextBlock,
 
     // singletons
     settings,
