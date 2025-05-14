@@ -10,8 +10,6 @@ type Props = {
 }
 
 export default function Hero({ section }: Props) {
-    console.log(section.buttons[0])
-
     return (
         <Section className="h-[calc(100vh-74px)]">
             {section.image?.asset?._ref 
