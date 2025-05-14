@@ -25,7 +25,7 @@ export default function Hero({ section }: Props) {
                     <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 to-transparent opacity-50 h-1/2 top-1/2"></div>
                 </div>
             }
-            <div className="absolute text-white top-[55%] z-10 px-4">
+            <div className="absolute text-white top-[55%] sm:w-3/4 z-10 px-4 sm:px-12">
                 <h1 className="text-orange-500 text-6xl font-bold tracking-wide text-wrap text-shadow-lg mb-2">{section.heading}</h1>
                 {section.text && <PortableText value={section.text}/>}
                 <div className="mt-6">
