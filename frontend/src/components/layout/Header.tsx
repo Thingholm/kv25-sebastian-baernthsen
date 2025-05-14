@@ -2,7 +2,6 @@ import { sanityFetch } from "@/sanity/lib/live";
 import { defineQuery } from "next-sanity";
 import Link from "next/link";
 import Image from "next/image";
-import { MenuItem } from "@/sanity/types/sanity.types";
 import Nav from "./Nav";
 
 const SETTINGS_QUERY = defineQuery(`*[_type == "settings"]{ _id, title, menu }`)
@@ -12,8 +11,6 @@ export default async function Header() {
         query: SETTINGS_QUERY,
         params: {}
     })
-
-    console.log(settings[0])
 
     return (
         <header className="bg-venstre-blue-700 text-white flex justify-between items-center px-4 py-2 max-w-full">
