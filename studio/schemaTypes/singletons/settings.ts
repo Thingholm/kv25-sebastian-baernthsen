@@ -1,5 +1,6 @@
 import { defineField, defineType } from "sanity";
 import { CogIcon } from '@sanity/icons';
+import socialMediaLinks from "../objects/socialMediaLinks";
 
 export default defineType({
     name: "settings",
@@ -18,7 +19,8 @@ export default defineType({
             type: "array",
             of: [{ type: "menuItem" }],
             description: "Menu displayed in header"
-        })
+        }),
+        defineField(socialMediaLinks),
     ],
     preview: {
         prepare() {
