@@ -68,6 +68,19 @@ export type Geopoint = {
   alt?: number
 }
 
+export type MediaAppearances = {
+  _id: string
+  _type: 'mediaAppearances'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  appearances?: Array<
+    {
+      _key: string
+    } & MediaAppearanceItem
+  >
+}
+
 export type HomePage = {
   _id: string
   _type: 'homePage'
@@ -91,6 +104,9 @@ export type HomePage = {
     | ({
         _key: string
       } & Form)
+    | ({
+        _key: string
+      } & MediaAppearancesSection)
   >
 }
 
@@ -114,6 +130,11 @@ export type Settings = {
     youtube?: string
     linkedin?: string
   }
+}
+
+export type MediaAppearancesSection = {
+  _type: 'mediaAppearancesSection'
+  heading?: string
 }
 
 export type Form = {
@@ -257,6 +278,27 @@ export type Hero = {
       _key: string
     } & Button
   >
+}
+
+export type MediaAppearanceItem = {
+  _type: 'mediaAppearanceItem'
+  heading?: string
+  url?: string
+  date?: string
+  media?: string
+  image?: {
+    asset?: {
+      _ref: string
+      _type: 'reference'
+      _weak?: boolean
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+    }
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    alt?: string
+    _type: 'image'
+  }
 }
 
 export type KeyCase = {
@@ -421,13 +463,16 @@ export type AllSanitySchemaTypes =
   | SanityImageDimensions
   | SanityFileAsset
   | Geopoint
+  | MediaAppearances
   | HomePage
   | Settings
+  | MediaAppearancesSection
   | Form
   | Contact
   | KeyCases
   | MediaTextBlock
   | Hero
+  | MediaAppearanceItem
   | KeyCase
   | MenuItem
   | Button
