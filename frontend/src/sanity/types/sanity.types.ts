@@ -82,6 +82,9 @@ export type HomePage = {
     | ({
         _key: string
       } & MediaTextBlock)
+    | ({
+        _key: string
+      } & KeyCases)
   >
 }
 
@@ -97,6 +100,17 @@ export type Settings = {
       _key: string
     } & MenuItem
   >
+}
+
+export type KeyCases = {
+  _type: 'keyCases'
+  heading?: string
+  cases?: Array<
+    {
+      _key: string
+    } & KeyCase
+  >
+  button?: Button
 }
 
 export type MediaTextBlock = {
@@ -212,6 +226,24 @@ export type Hero = {
       _key: string
     } & Button
   >
+}
+
+export type KeyCase = {
+  _type: 'keyCase'
+  heading?: string
+  icon?: {
+    asset?: {
+      _ref: string
+      _type: 'reference'
+      _weak?: boolean
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+    }
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    alt?: string
+    _type: 'image'
+  }
 }
 
 export type MenuItem = {
@@ -360,8 +392,10 @@ export type AllSanitySchemaTypes =
   | Geopoint
   | HomePage
   | Settings
+  | KeyCases
   | MediaTextBlock
   | Hero
+  | KeyCase
   | MenuItem
   | Button
   | BlockContent
