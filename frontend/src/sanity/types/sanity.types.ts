@@ -85,6 +85,12 @@ export type HomePage = {
     | ({
         _key: string
       } & KeyCases)
+    | ({
+        _key: string
+      } & Contact)
+    | ({
+        _key: string
+      } & Form)
   >
 }
 
@@ -100,6 +106,31 @@ export type Settings = {
       _key: string
     } & MenuItem
   >
+  socialMediaLinks?: {
+    x?: string
+    facebook?: string
+    instagram?: string
+    tiktok?: string
+    youtube?: string
+    linkedin?: string
+  }
+}
+
+export type Form = {
+  _type: 'form'
+  heading?: string
+  description?: string
+  submitButtonText?: string
+  receivingEmail?: string
+}
+
+export type Contact = {
+  _type: 'contact'
+  heading?: string
+  description?: string
+  phone?: string
+  email?: string
+  socialMedia?: boolean
 }
 
 export type KeyCases = {
@@ -392,6 +423,8 @@ export type AllSanitySchemaTypes =
   | Geopoint
   | HomePage
   | Settings
+  | Form
+  | Contact
   | KeyCases
   | MediaTextBlock
   | Hero

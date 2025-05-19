@@ -1,8 +1,8 @@
-import { Hero, KeyCases, MediaTextBlock } from "@/sanity/types/sanity.types";
+import { Contact, Form, Hero, KeyCases, MediaTextBlock } from "@/sanity/types/sanity.types";
 import dynamic from "next/dynamic";
 import { ComponentType } from "react"
 
-type PageSection = Hero | MediaTextBlock | KeyCases
+type PageSection = Hero | MediaTextBlock | KeyCases | Contact | Form
 
 type SectionComponent<T extends PageSection = PageSection> = ComponentType<{
     section: T
@@ -12,6 +12,8 @@ const sectionComponentsMap: Record<string, SectionComponent> = {
     hero: dynamic(() => import("../sections/Hero"), { ssr: true }) as SectionComponent,
     mediaTextBlock: dynamic(() => import("../sections/MediaTextBlock"), { ssr: true }) as SectionComponent,
     keyCases: dynamic(() => import("../sections/KeyCases"), { ssr: true }) as SectionComponent,
+    contact: dynamic(() => import("../sections/Contact"), { ssr: true }) as SectionComponent,
+    form: dynamic(() => import("../sections/Form"), { ssr: true }) as SectionComponent,
 };
 
 type Props = {
