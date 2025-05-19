@@ -1,10 +1,10 @@
 import { Contact as ContactType } from "@/sanity/types/sanity.types"
 import Section from "../Section"
-import { getSocialMediaLinks } from "@/app/lib/getSocialMediaLinks"
+import { getSocialMediaLinks } from "@/lib/getSocialMediaLinks"
 import SectionHeading from "../SectionHeading"
 import { IoCallOutline, IoMailOutline } from "react-icons/io5"
 import Link from "next/link"
-import { formatPhoneNumber } from "@/app/lib/formatPhoneNumber"
+import { formatPhoneNumber } from "@/lib/formatPhoneNumber"
 import SocialMediaLink from "../SocialMediaLink"
 
 type Props = {
