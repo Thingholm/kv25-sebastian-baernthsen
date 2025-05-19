@@ -3,6 +3,7 @@ import Section from "../Section";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/urlFor";
 import Button from "../Button";
+import SectionHeading from "../SectionHeading";
 
 type Props = {
     section: KeyCasesType;
@@ -11,7 +12,7 @@ type Props = {
 export default function KeyCases({ section }: Props) {
     return (
         <Section className="bg-venstre-blue-700 text-white text-center pb-12 pt-8">
-            <h2 className="text-4xl font-bold text-orange-500 mb-8">{section.heading}</h2>
+            <SectionHeading>{section.heading}</SectionHeading>
             <div className=" flex-wrap justify-around mb-8 sm:flex">
                 {section.cases?.map(caseItem => (
                     <div className="flex flex-col items-center sm:px-2" key={caseItem._key}>

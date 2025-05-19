@@ -4,6 +4,7 @@ import { PortableText } from "next-sanity";
 import Button from "../Button";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/urlFor";
+import SectionHeading from "../SectionHeading";
 
 type Props = {
     section: MediaTextBlockType;
@@ -29,7 +30,7 @@ export default function MediaTextBlock({ section }: Props) {
             {section.content &&
             <div className="md:w-2/3">
                 {section.heading && 
-                    <h2 className="text-3xl font-bold text-orange-500 mb-4">{section.heading}</h2>
+                    <SectionHeading>{section.heading}</SectionHeading>
                 }
                 {section.content && 
                     <PortableText value={section.content}/>
