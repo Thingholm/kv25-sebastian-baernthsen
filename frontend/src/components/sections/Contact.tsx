@@ -14,9 +14,6 @@ type Props = {
 export default async function Contact({ section }: Props) {
     const socialMediaLinks = await getSocialMediaLinks();
 
-    console.log(section);
-    console.log(socialMediaLinks)
-
     return (
         <Section className="text-center">
             <SectionHeading>{section.heading}</SectionHeading>
