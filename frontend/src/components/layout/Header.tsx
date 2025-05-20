@@ -14,7 +14,7 @@ export default async function Header() {
     })
 
     return (
-        <header className="bg-venstre-blue-700 text-white flex justify-between items-center px-4 py-2 w-full fixed z-50">
+        <header className="bg-venstre-blue-700 text-white flex justify-between items-center px-4 md:px-20 lg:px-32 py-2 w-full fixed z-50 shadow-md">
             <Link 
                 href="/"
             >

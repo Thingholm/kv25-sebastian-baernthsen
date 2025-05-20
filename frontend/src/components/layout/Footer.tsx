@@ -14,7 +14,7 @@ export default async function Footer() {
     })
 
     return (
-        <footer className="bg-venstre-blue-700 text-white px-4 py-6">
+        <footer className="bg-venstre-blue-700 text-white px-4 py-6  md:px-20 lg:px-32">
             <div className="flex flex-col md:flex-row md:space-x-16">
                 <div>
                     <Link href="/" className="text-orange-500 text-3xl font-semibold">{settings.title}</Link>
