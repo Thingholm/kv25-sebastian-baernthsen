@@ -130,6 +130,8 @@ export type Settings = {
     youtube?: string
     linkedin?: string
   }
+  phone?: string
+  email?: string
 }
 
 export type MediaAppearancesSection = {
@@ -372,6 +374,36 @@ export type BlockContent = Array<
     }
 >
 
+export type Page = {
+  _id: string
+  _type: 'page'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  name?: string
+  slug?: Slug
+  pageSections?: Array<
+    | ({
+        _key: string
+      } & Hero)
+    | ({
+        _key: string
+      } & MediaTextBlock)
+    | ({
+        _key: string
+      } & KeyCases)
+    | ({
+        _key: string
+      } & Contact)
+    | ({
+        _key: string
+      } & Form)
+    | ({
+        _key: string
+      } & MediaAppearancesSection)
+  >
+}
+
 export type SanityImageCrop = {
   _type: 'sanity.imageCrop'
   top?: number
@@ -441,16 +473,6 @@ export type Link = {
   externalUrl?: string
 }
 
-export type Page = {
-  _id: string
-  _type: 'page'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
-  name?: string
-  slug?: Slug
-}
-
 export type Slug = {
   _type: 'slug'
   current?: string
@@ -477,12 +499,12 @@ export type AllSanitySchemaTypes =
   | MenuItem
   | Button
   | BlockContent
+  | Page
   | SanityImageCrop
   | SanityImageHotspot
   | SanityImageAsset
   | SanityAssetSourceData
   | SanityImageMetadata
   | Link
-  | Page
   | Slug
 export declare const internalGroqTypeReferenceTo: unique symbol
