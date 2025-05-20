@@ -12,7 +12,7 @@ type Props = {
 
 export default function MediaAppearanceItem({ item }: Props) {
     return (
-        <Link href={item.url ?? "/"}>-
+        <Link href={item.url ?? "/"}>
             <div className="rounded-2xl overflow-hidden shadow-md w-80 hover:shadow-2xl duration-150 hover:scale-105">
                 <div className="relative w-80 h-50">
                     {item.image?.asset?._ref &&
