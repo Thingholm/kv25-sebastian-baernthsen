@@ -11,7 +11,6 @@ export default async function IndexPage() {
 
   return (
     <main className="text-venstre-blue-700">
-      <div className="h-[74px] relative block"></div>
       <PageBuilder sections={homePage.pageSections}/>
     </main>
   );

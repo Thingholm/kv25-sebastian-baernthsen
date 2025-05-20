@@ -9,11 +9,11 @@ type Props = {
     settings: Settings;
 }
 
-export default function Nav({ settings }: Props) {
+export default function MobileNav({ settings }: Props) {
     const [showNav, setShowNav] = useState(false);
 
     return (
-        <>
+        <div className="flex items-center md:hidden">
             <button 
                 className="relative"
                 onClick={() => setShowNav(s => !s)}
@@ -47,6 +47,6 @@ export default function Nav({ settings }: Props) {
                     ))}
                 </nav>
             </div>
-        </>
+        </div>
     )
 }

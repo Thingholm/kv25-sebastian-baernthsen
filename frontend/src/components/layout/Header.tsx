@@ -2,9 +2,10 @@ import { sanityFetch } from "@/sanity/lib/live";
 import { defineQuery } from "next-sanity";
 import Link from "next/link";
 import Image from "next/image";
-import Nav from "./Nav";
+import MobileNav from "./MobileNav";
+import DesktopNav from "./DesktopNav";
 
-const SETTINGS_QUERY = defineQuery(`*[_type == "settings"]{ _id, title, menu }`)
+const SETTINGS_QUERY = defineQuery(`*[_type == "settings"]{ _id, title, menu }[0]`)
 
 export default async function Header() {
     const { data: settings } = await sanityFetch({
@@ -20,14 +21,15 @@ export default async function Header() {
                 <Image
                     src="/Venstre_Logo_Kun_V_Orange.svg"
                     alt="Logo"
-                    width={50}
-                    height={58}
+                    width={42}
+                    height={50}
                     className="inline"
                 />
-                <h1 className="inline ml-2 text-lg font-bold">{settings[0].title}</h1>
+                <h1 className="inline ml-2 text-lg font-bold">{settings.title}</h1>
             </Link>
 
-           <Nav settings={settings[0]}/>
+           <MobileNav settings={settings}/>
+           <DesktopNav settings={settings}/>
         </header>
     )
 }
