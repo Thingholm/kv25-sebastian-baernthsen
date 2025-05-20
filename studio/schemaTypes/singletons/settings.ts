@@ -21,6 +21,22 @@ export default defineType({
             description: "Menu displayed in header"
         }),
         defineField(socialMediaLinks),
+        defineField({
+            name: "phone",
+            type: "string",
+            validation: rule =>
+                rule
+                    .required()
+                    .regex(/^\d{8}$/, {
+                        name: "phone number",
+                        invert: false
+                    })
+        }),
+        defineField({
+            name: "email",
+            type: "string",
+            validation: rule => rule.required().email(),
+        }),
     ],
     preview: {
         prepare() {
