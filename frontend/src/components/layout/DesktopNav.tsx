@@ -10,9 +10,11 @@ export default function DesktopNav({ settings }: Props) {
     return (
         <div className="md:flex items-center hidden space-x-8">
             {settings.menu?.map((menuItem, index) => (
-                <div className="group relative">
+                <div 
+                    className="group relative"                         
+                    key={index}
+                >
                     <Link
-                        key={index}
                         href={(menuItem.menuItemUrl?.linkType == "external" ? menuItem.menuItemUrl.externalUrl : menuItem.menuItemUrl?.internalLink?._ref) ?? "#"}
                         className="hover:text-orange-500 duration-200"
                     >
