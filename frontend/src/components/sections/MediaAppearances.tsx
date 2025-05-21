@@ -2,7 +2,7 @@
 import { MediaAppearancesSection } from "@/sanity/types/sanity.types"
 import Section from "../Section"
 import SectionHeading from "../SectionHeading"
-import { getMediaAppearances } from "@/lib/getMediaAppearances"
+import { getMediaAppearances } from "@/lib/queries/getMediaAppearances"
 import MediaAppearancesCarousel from "../MediaAppearancesCarousel"
 
 
