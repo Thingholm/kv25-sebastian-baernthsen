@@ -11,6 +11,7 @@ import hero from "./objects/sections/hero";
 import keyCases from "./objects/sections/keyCases";
 import mediaAppearancesSection from "./objects/sections/mediaAppearancesSection";
 import mediaTextBlock from "./objects/sections/mediaTextBlock";
+import pageHeading from "./objects/sections/pageHeading";
 import homePage from "./singletons/homePage";
 import mediaAppearances from "./singletons/mediaAppearances";
 import settings from "./singletons/settings";
@@ -34,6 +35,7 @@ export const schemaTypes = [
     contact,
     form,
     mediaAppearancesSection,
+    pageHeading,
 
     // singletons
     settings,

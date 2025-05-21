@@ -5,6 +5,7 @@ import keyCases from "../objects/sections/keyCases";
 import contact from "../objects/sections/contact";
 import form from "../objects/sections/form";
 import mediaAppearances from "../objects/sections/mediaAppearancesSection";
+import pageHeading from "../objects/sections/pageHeading";
 
 const pageSectionsObjects = [
     hero,
@@ -12,7 +13,8 @@ const pageSectionsObjects = [
     keyCases,
     contact,
     form,
-    mediaAppearances
+    mediaAppearances,
+    pageHeading
 ];
 
 export default defineField({
