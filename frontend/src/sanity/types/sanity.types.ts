@@ -107,6 +107,12 @@ export type HomePage = {
     | ({
         _key: string
       } & MediaAppearancesSection)
+    | ({
+        _key: string
+      } & PageHeading)
+    | ({
+        _key: string
+      } & ExpandedKeyCase)
   >
 }
 
@@ -132,6 +138,90 @@ export type Settings = {
   }
   phone?: string
   email?: string
+}
+
+export type ExpandedKeyCase = {
+  _type: 'expandedKeyCase'
+  heading?: string
+  icon?: {
+    asset?: {
+      _ref: string
+      _type: 'reference'
+      _weak?: boolean
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+    }
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    alt?: string
+    _type: 'image'
+  }
+  imagePosition?: 'left' | 'right'
+  image?: {
+    asset?: {
+      _ref: string
+      _type: 'reference'
+      _weak?: boolean
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+    }
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    alt?: string
+    _type: 'image'
+  }
+  content?: Array<
+    | {
+        children?: Array<{
+          marks?: Array<string>
+          text?: string
+          _type: 'span'
+          _key: string
+        }>
+        style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote'
+        listItem?: 'bullet' | 'number'
+        markDefs?: Array<{
+          customLink?: Link
+          _type: 'customLink'
+          _key: string
+        }>
+        level?: number
+        _type: 'block'
+        _key: string
+      }
+    | {
+        asset?: {
+          _ref: string
+          _type: 'reference'
+          _weak?: boolean
+          [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+        }
+        media?: unknown
+        hotspot?: SanityImageHotspot
+        crop?: SanityImageCrop
+        alt?: string
+        _type: 'image'
+        _key: string
+      }
+  >
+}
+
+export type PageHeading = {
+  _type: 'pageHeading'
+  heading?: string
+  image?: {
+    asset?: {
+      _ref: string
+      _type: 'reference'
+      _weak?: boolean
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+    }
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    alt?: string
+    _type: 'image'
+  }
 }
 
 export type MediaAppearancesSection = {
@@ -401,6 +491,12 @@ export type Page = {
     | ({
         _key: string
       } & MediaAppearancesSection)
+    | ({
+        _key: string
+      } & PageHeading)
+    | ({
+        _key: string
+      } & ExpandedKeyCase)
   >
 }
 
@@ -488,6 +584,8 @@ export type AllSanitySchemaTypes =
   | MediaAppearances
   | HomePage
   | Settings
+  | ExpandedKeyCase
+  | PageHeading
   | MediaAppearancesSection
   | Form
   | Contact
