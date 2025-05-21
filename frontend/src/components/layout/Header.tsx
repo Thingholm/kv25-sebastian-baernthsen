@@ -4,10 +4,13 @@ import Link from "next/link";
 import Image from "next/image";
 import MobileNav from "./MobileNav";
 import DesktopNav from "./DesktopNav";
+import { getPages } from "@/lib/queries/getPages";
 
-const SETTINGS_QUERY = defineQuery(`*[_type == "settings"]{ _id, title, menu }[0]`)
+const SETTINGS_QUERY = defineQuery(`*[_type == "settings"]{ _id, title }[0]`)
 
 export default async function Header() {
+    const pages = await getPages();
+
     const { data: settings } = await sanityFetch({
         query: SETTINGS_QUERY,
         params: {}
@@ -28,8 +31,8 @@ export default async function Header() {
                 <h1 className="inline ml-2 text-lg font-bold">{settings.title}</h1>
             </Link>
 
-           <MobileNav settings={settings}/>
-           <DesktopNav settings={settings}/>
+           <MobileNav pages={pages}/>
+           <DesktopNav pages={pages}/>
         </header>
     )
 }
