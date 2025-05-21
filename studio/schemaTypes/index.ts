@@ -6,6 +6,7 @@ import link from "./objects/link";
 import mediaAppearanceItem from "./objects/mediaAppearanceItem";
 import menuItem from "./objects/menuItem";
 import contact from "./objects/sections/contact";
+import expandedKeyCase from "./objects/sections/expandedKeyCase";
 import form from "./objects/sections/form";
 import hero from "./objects/sections/hero";
 import keyCases from "./objects/sections/keyCases";
@@ -36,6 +37,7 @@ export const schemaTypes = [
     form,
     mediaAppearancesSection,
     pageHeading,
+    expandedKeyCase,
 
     // singletons
     settings,
