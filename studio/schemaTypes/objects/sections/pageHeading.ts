@@ -11,19 +11,5 @@ export default defineType({
             name: "heading",
             type: "string",
         }),
-        defineField({
-            name: "image",
-            type: "image",
-            options: { hotspot: true },
-            validation: rule => rule.required(),
-            fields: [
-                defineField({
-                name: "alt",
-                type: "string",
-                title: "Alternative text",
-                validation: rule => rule.required(),
-                }),
-            ],
-        }),
     ]
 })
