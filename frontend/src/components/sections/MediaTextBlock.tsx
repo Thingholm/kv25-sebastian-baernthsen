@@ -11,24 +11,36 @@ type Props = {
 }
 
 export default function MediaTextBlock({ section }: Props) {
+    const imageUrl = section.image?.asset?._ref && urlFor(section.image.asset._ref).url();
+    const imageAlt = section.image?.alt ?? "";
+    const imageWidth = imageUrl ? (parseInt(imageUrl.split("-")[1]?.split(".")[0].split("x")[0]) ?? 2000) : 2000;
+    const imageHeight = imageUrl ? (parseInt(imageUrl.split("-")[1]?.split(".")[0].split("x")[1]) ?? 1000) : 1000;
+
     const imagePositionSectionVariants = {
         left: "md:flex-row-reverse",
         right: "md:flex-row",
-        start: "",
+        start: "flex-col-reverse",
         end: "",
     }
 
     const imagePositionImageVariants = {
-        left: "mt-8 md:mt-0 md:mr-12 md:w-1/3",
-        right: "mt-8 md:mt-0 md:ml-12 md:w-1/3",
-        start: "",
+        left: "mt-8 md:mt-0 md:mr-12 md:w-2/5",
+        right: "mt-8 md:mt-0 md:ml-12 md:w-2/5",
+        start: "mb-8",
         end: "mt-8",
+    }
+
+    const imagePositionTextVariants = {
+        left: "md:w-3/5",
+        right: "md:w-3/5",
+        start: "",
+        end: "",
     }
 
     return (
         <Section className={`${imagePositionSectionVariants[section.imagePosition ?? "left"]} flex flex-col items-center`}>
             {section.content &&
-            <div className="md:w-2/3">
+            <div className={`${section.image?.asset?._ref ? imagePositionTextVariants[section.imagePosition ?? "left"] : ""}`}>
                 {section.heading && 
                     <SectionHeading>{section.heading}</SectionHeading>
                 }
@@ -43,12 +55,12 @@ export default function MediaTextBlock({ section }: Props) {
                 }
             </div>
             }
-            {section.image?.asset?._ref &&
+            {imageUrl &&
                 <Image
-                src={urlFor(section.image?.asset?._ref).url()}
-                alt={section.image.alt ?? ""}
-                height={400}
-                width={300}
+                src={imageUrl}
+                alt={imageAlt}
+                height={imageHeight}
+                width={imageWidth}
                 className={`${imagePositionImageVariants[section.imagePosition ?? "left"]} object-cover rounded-2xl w-full`}
                 />
             }
