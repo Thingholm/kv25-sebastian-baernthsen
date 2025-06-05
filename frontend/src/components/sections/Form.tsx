@@ -50,7 +50,7 @@ export default function Form({ section }: Props) {
     return (
         <Section>
             {section.heading && 
-                <SectionHeading>{section.heading}</SectionHeading>
+                <SectionHeading className="text-center">{section.heading}</SectionHeading>
             }
             <form onSubmit={handleSubmit} className="space-y-3">
                 <div>
