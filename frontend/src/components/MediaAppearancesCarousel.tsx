@@ -49,7 +49,7 @@ export default function MediaAppearancesCarousel({ appearances }: { appearances:
             <button
                 onClick={scrollLeft}
                 disabled={!canScrollLeft}
-                className={`hidden sm:block absolute left-2 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full shadow-lg transition-all duration-200 hover:cursor-pointer ${
+                className={`hidden sm:block absolute left-3 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full shadow-lg transition-all duration-200 hover:cursor-pointer ${
                     canScrollLeft 
                         ? 'bg-white hover:bg-gray-50 text-gray-800 hover:shadow-xl' 
                         : 'bg-gray-200 text-gray-400 cursor-not-allowed'
@@ -61,7 +61,7 @@ export default function MediaAppearancesCarousel({ appearances }: { appearances:
 
             <div 
                 ref={scrollRef}
-                className="flex py-2 space-x-6 overflow-x-auto no-scrollbar scroll-smooth"
+                className="flex py-2 pb-10 px-2 space-x-6 overflow-x-auto no-scrollbar scroll-smooth"
                 style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
             >
                 {appearances.map((item: MediaAppearanceItemType, index: number) => (
@@ -72,7 +72,7 @@ export default function MediaAppearancesCarousel({ appearances }: { appearances:
             <button
                 onClick={scrollRight}
                 disabled={!canScrollRight}
-                className={`hidden sm:block absolute right-2 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full shadow-lg transition-all duration-200 hover:cursor-pointer ${
+                className={`hidden sm:block absolute right-3 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full shadow-lg transition-all duration-200 hover:cursor-pointer ${
                     canScrollRight 
                         ? 'bg-white hover:bg-gray-50 text-gray-800 hover:shadow-xl' 
                         : 'bg-gray-200 text-gray-400 cursor-not-allowed'
