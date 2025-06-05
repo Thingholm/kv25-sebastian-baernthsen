@@ -6,7 +6,25 @@ import MobileNav from "./MobileNav";
 import DesktopNav from "./DesktopNav";
 import { getPages } from "@/lib/queries/getPages";
 
-const SETTINGS_QUERY = defineQuery(`*[_type == "settings"]{ _id, title }[0]`)
+const SETTINGS_QUERY = defineQuery(`
+    *[_type == "settings"]{ 
+        _id, 
+        title, 
+        menu[] {
+            _key,
+            text,
+            menuItemUrl {
+                linkType,
+                internalLink -> {
+                    _id,
+                    slug {
+                        current
+                    }
+                }
+            }
+        }
+    }[0]
+`);
 
 export default async function Header() {
     const pages = await getPages();
@@ -32,7 +50,7 @@ export default async function Header() {
             </Link>
 
            <MobileNav pages={pages}/>
-           <DesktopNav pages={pages}/>
+           <DesktopNav pages={pages} menu={settings.menu}/>
         </header>
     )
 }
