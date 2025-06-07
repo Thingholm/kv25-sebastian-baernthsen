@@ -41,6 +41,7 @@ export default function MobileNav({ pages }: Props) {
                             key={index}
                             href={`/${menuItem.slug?.current}`}
                             className={`${index == 0 ? "border-t-[1px]" : ""} border-b-[1px] border-venstre-blue-600 pl-4 pr-20 py-2`}
+                            onClick={() => setShowNav(false)}
                         >
                             {menuItem.name}
                         </Link>
