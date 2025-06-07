@@ -1,7 +1,31 @@
 import PageBuilder from "@/components/pageBuilder/PageBuilder";
 import { sanityFetch } from "@/sanity/lib/live";
 
-const PAGE_QUERY = `*[_type == "page" && slug.current == $slug][0]`;
+const PAGE_QUERY = `*[_type == "page" && slug.current == $slug][0] {
+  _id,
+  name,
+  slug,
+  pageSections[] {
+    _type,
+    _key,
+    ...,
+    buttons[] {
+      _key,
+      _type,
+      text,
+      variant,
+      "link": link {
+        _type,
+        linkType,
+        externalUrl,
+        "internalLink": internalLink-> {
+          _id,
+          "slug": slug
+        }
+      }
+    }
+  }
+}`;
 
 export default async function PostPage({
   params,
