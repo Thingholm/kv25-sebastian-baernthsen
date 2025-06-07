@@ -9,7 +9,8 @@ import { getPages } from "@/lib/queries/getPages";
 const SETTINGS_QUERY = defineQuery(`
     *[_type == "settings"]{ 
         _id, 
-        title, 
+        title,
+        subtitle,
         menu[] {
             _key,
             text,
@@ -35,18 +36,22 @@ export default async function Header() {
     })
 
     return (
-        <header className="bg-venstre-blue-700 text-white flex justify-between items-center px-4 md:px-20 lg:px-32 py-2 w-full fixed z-50 shadow-md">
+        <header className="bg-venstre-blue-700 text-white flex justify-between items-center px-4 md:px-20 lg:px-32 py-1 w-full fixed z-50 shadow-md">
             <Link 
                 href="/"
+                className="flex items-center"
             >
                 <Image
                     src="/Venstre_Logo_Kun_V_Orange.svg"
                     alt="Logo"
-                    width={42}
-                    height={50}
+                    width={35}
+                    height={46}
                     className="inline"
                 />
-                <h1 className="inline ml-2 text-lg font-bold">{settings.title}</h1>
+                <div className="ml-2">
+                    <h1 className="text-lg font-bold">{settings.title}</h1>
+                    <h2 className="relative -top-1 text-sm font-light">{settings.subtitle}</h2>
+                </div>
             </Link>
 
            <MobileNav pages={pages}/>

@@ -25,7 +25,7 @@ export default function RootLayout({
         className={`${urbanist.variable} antialiased overflow-x-hidden`}
       >
         <Header/>
-        <div className="h-[64px] relative block"></div>
+        <div className="h-[53px] relative block"></div>
         {children}
         <Footer/>
       </body>

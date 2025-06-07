@@ -10,7 +10,7 @@ type Props = {
 
 export default function Hero({ section }: Props) {
     return (
-        <section className="h-[calc(100vh-74px)]">
+        <section className="h-[calc(100vh-53px)]">
             {section.image?.asset?._ref 
                 && <div className="relative h-full overflow-hidden">
                     <Image

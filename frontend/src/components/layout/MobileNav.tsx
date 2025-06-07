@@ -13,7 +13,7 @@ export default function MobileNav({ pages }: Props) {
     const [showNav, setShowNav] = useState(false);
 
     return (
-        <div className="flex items-center md:hidden">
+        <div className="flex items-center lg:hidden">
             <button 
                 className="relative"
                 onClick={() => setShowNav(s => !s)}
