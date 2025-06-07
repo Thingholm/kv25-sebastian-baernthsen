@@ -19,5 +19,11 @@ export default defineType({
       group: 'content',
     }),
     pageSections,
+    defineField({
+      name: 'seoMetaFields',
+      title: 'SEO & Metadata',
+      type: 'seoMetaFields',
+      group: 'seo',
+    }),
   ],
 });

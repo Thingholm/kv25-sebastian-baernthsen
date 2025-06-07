@@ -1,23 +1,14 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Urbanist } from "next/font/google";
-import "./globals.css";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
 import { client } from "@/sanity/client";
-import { homepageSeoQuery } from "@/sanity/queries";
+import { pageSeoQuery } from "@/sanity/queries";
 
-const urbanist = Urbanist({
-  variable: "--font-urbanist-sans",
-  subsets: ["latin"],
-});
+type Props = {
+  params: { slug: string };
+};
 
-async function getSeoData() {
-  const data = await client.fetch(homepageSeoQuery);
-  return data?.seoMetaFields;
-}
-
-export async function generateMetadata(): Promise<Metadata> {
-  const seo = await getSeoData();
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const slug = await params.slug;
+  const seo = await getSeoData(slug);
 
   return {
     title: seo?.metaTitle || "Default Title",
@@ -46,21 +37,15 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return (
-    <html lang="da">
-      <body
-        className={`${urbanist.variable} antialiased overflow-x-hidden`}
-      >
-        <Header/>
-        <div className="h-[53px] relative block"></div>
-        {children}
-        <Footer/>
-      </body>
-    </html>
-  );
+async function getSeoData(slug: string) {
+  const data = await client.fetch(pageSeoQuery, { slug });
+  return data?.seoMetaFields;
 }
+
+export default function PageLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return children;
+} 

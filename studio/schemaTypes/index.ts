@@ -16,6 +16,8 @@ import pageHeading from "./objects/sections/pageHeading";
 import homePage from "./singletons/homePage";
 import mediaAppearances from "./singletons/mediaAppearances";
 import settings from "./singletons/settings";
+import seoMetaFields from "./objects/seo/seo";
+import openGraph from "./objects/seo/openGraph";
 
 export const schemaTypes = [
     // documents
@@ -28,6 +30,8 @@ export const schemaTypes = [
     menuItem,
     keyCase,
     mediaAppearanceItem,
+    seoMetaFields,
+    openGraph,
 
     // sections
     hero,
