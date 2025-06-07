@@ -5,10 +5,23 @@ import Button from "../Button";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/urlFor";
 import SectionHeading from "../SectionHeading";
+import CustomPortableText from "../CustomPortableText";
 
 type Props = {
     section: MediaTextBlockType;
 }
+
+type SanityPortableText = {
+  _type: 'block';
+  children: {
+    _type: 'span';
+    text: string;
+    marks?: string[];
+    _key: string;
+  }[];
+  style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote';
+  _key: string;
+}[];
 
 export default function MediaTextBlock({ section }: Props) {
     const imageUrl = section.image?.asset?._ref && urlFor(section.image.asset._ref).url();
@@ -45,7 +58,7 @@ export default function MediaTextBlock({ section }: Props) {
                     <SectionHeading>{section.heading}</SectionHeading>
                 }
                 {section.content && 
-                    <PortableText value={section.content}/>
+                    <CustomPortableText value={section.content as SanityPortableText}/>
                 }
                 {section.buttons && 
                     <div className="mt-6">
