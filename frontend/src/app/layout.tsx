@@ -54,12 +54,16 @@ export default function RootLayout({
   return (
     <html lang="da">
       <body
-        className={`${urbanist.variable} antialiased overflow-x-hidden`}
+        className={`${urbanist.variable} antialiased overflow-x-hidden min-h-screen`}
       >
-        <Header/>
-        <div className="h-[53px] relative block"></div>
-        {children}
-        <Footer/>
+        <div className="overflow-x-hidden min-h-screen flex flex-col">
+          <Header/>
+          <div className="h-[53px] relative block"></div>
+          <main className="flex-1 overflow-x-hidden">
+            {children}
+          </main>
+          <Footer/>
+        </div>
       </body>
     </html>
   );
