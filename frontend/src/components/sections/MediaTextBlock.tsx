@@ -1,11 +1,13 @@
+"use client";
+
 import { MediaTextBlock as MediaTextBlockType } from "@/sanity/types/sanity.types"
 import Section from "../Section";
-import { PortableText } from "next-sanity";
 import Button from "../Button";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/urlFor";
 import SectionHeading from "../SectionHeading";
 import CustomPortableText from "../CustomPortableText";
+import { motion } from "framer-motion";
 
 type Props = {
     section: MediaTextBlockType;
@@ -22,6 +24,36 @@ type SanityPortableText = {
   style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote';
   _key: string;
 }[];
+
+const textVariants = {
+    hidden: (align: MediaTextBlockType['imagePosition']) => ({ 
+        opacity: 0, 
+        x: align == "right" ? "-50%" : "50%" 
+    }),
+    visible: { 
+        opacity: 1,
+        x: 0,
+        transition: {
+            duration: 0.5,
+            ease: "easeInOut"
+        }
+    }
+}
+
+const imageVariants = {
+    hidden: (align: MediaTextBlockType['imagePosition']) => ({ 
+        opacity: 0, 
+        x: align == "right" ? "50%" : "-50%" 
+    }),
+    visible: { 
+        opacity: 1,
+        x: 0,
+        transition: {
+            duration: 0.5,
+            ease: "easeInOut"
+        }
+    }
+}
 
 export default function MediaTextBlock({ section }: Props) {
     const imageUrl = section.image?.asset?._ref && urlFor(section.image.asset._ref).url();
@@ -51,32 +83,49 @@ export default function MediaTextBlock({ section }: Props) {
     }
 
     return (
-        <Section className={`${imagePositionSectionVariants[section.imagePosition ?? "left"]} flex flex-col items-center`}>
-            {section.content &&
-            <div className={`${section.image?.asset?._ref ? imagePositionTextVariants[section.imagePosition ?? "left"] : ""}`}>
-                {section.heading && 
-                    <SectionHeading>{section.heading}</SectionHeading>
+        <Section>
+            <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+                className={`${imagePositionSectionVariants[section.imagePosition ?? "left"]} flex flex-col items-center`}
+            >
+                {section.content &&
+                <motion.div 
+                    className={`${section.image?.asset?._ref ? imagePositionTextVariants[section.imagePosition ?? "left"] : ""}`}
+                    variants={textVariants}
+                    custom={section.imagePosition}
+                >
+                    {section.heading && 
+                        <SectionHeading>{section.heading}</SectionHeading>
+                    }
+                    {section.content && 
+                        <CustomPortableText value={section.content as SanityPortableText}/>
+                    }
+                    {section.buttons && 
+                        <div className="mt-6">
+                            {section.buttons?.[0] && <Button buttonProps={section.buttons[0]} className="mr-3"/>}
+                            {section.buttons?.[1] && <Button buttonProps={section.buttons[1]}/>}
+                        </div>
+                    }
+                </motion.div>
                 }
-                {section.content && 
-                    <CustomPortableText value={section.content as SanityPortableText}/>
+                {imageUrl &&
+                    <motion.div
+                        variants={imageVariants}
+                        custom={section.imagePosition}
+                        className={`${imagePositionImageVariants[section.imagePosition ?? "left"]} w-full`}
+                    >
+                        <Image
+                            src={imageUrl}
+                            alt={imageAlt}
+                            height={imageHeight}
+                            width={imageWidth}
+                            className={`object-cover rounded-2xl`}
+                        />
+                    </ motion.div>
                 }
-                {section.buttons && 
-                    <div className="mt-6">
-                        {section.buttons?.[0] && <Button buttonProps={section.buttons[0]} className="mr-3"/>}
-                        {section.buttons?.[1] && <Button buttonProps={section.buttons[1]}/>}
-                    </div>
-                }
-            </div>
-            }
-            {imageUrl &&
-                <Image
-                src={imageUrl}
-                alt={imageAlt}
-                height={imageHeight}
-                width={imageWidth}
-                className={`${imagePositionImageVariants[section.imagePosition ?? "left"]} object-cover rounded-2xl w-full`}
-                />
-            }
+            </motion.div>
         </Section>
     )
 }

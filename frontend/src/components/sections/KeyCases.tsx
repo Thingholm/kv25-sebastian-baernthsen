@@ -1,21 +1,51 @@
+"use client";
+
 import { KeyCases as KeyCasesType } from "@/sanity/types/sanity.types";
 import Section from "../Section";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/urlFor";
 import Button from "../Button";
 import SectionHeading from "../SectionHeading";
+import { delay, motion } from "framer-motion";
 
 type Props = {
     section: KeyCasesType;
 }
 
+
+const itemVariants = {
+    hidden: { 
+        opacity: 0, 
+        x: -20 
+    },
+    visible: (index: number) => ({ 
+        opacity: 1,
+        y: 0,
+        transition: {
+            duration: 0.5,
+            ease: "easeInOut",
+            delay: index * 0.2,
+        }
+    })
+};
+
 export default function KeyCases({ section }: Props) {
     return (
         <Section className="bg-venstre-blue-700 text-white text-center pb-12 pt-8">
             <SectionHeading>{section.heading}</SectionHeading>
-            <div className=" flex-wrap justify-around mb-8 sm:flex">
-                {section.cases?.map(caseItem => (
-                    <div className="flex flex-col items-center sm:px-2" key={caseItem._key}>
+            <motion.div 
+                className=" flex-wrap justify-around mb-8 sm:flex"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+            >
+                {section.cases?.map((caseItem, index) => (
+                    <motion.div 
+                        variants={itemVariants}
+                        custom={index}
+                        className="flex flex-col items-center sm:px-2" 
+                        key={caseItem._key}
+                    >
                         {caseItem.icon?.asset?._ref &&
                             <Image
                                 src={urlFor(caseItem.icon?.asset?._ref).url()}
@@ -29,9 +59,9 @@ export default function KeyCases({ section }: Props) {
                         {caseItem.heading &&
                             <h4 className="text-xl font-medium mb-6">{caseItem.heading}</h4>
                         }
-                    </div>
+                    </motion.div>
                 ))}
-            </div>
+            </motion.div>
             {section.button &&
                 <Button buttonProps={section.button}/>
             }

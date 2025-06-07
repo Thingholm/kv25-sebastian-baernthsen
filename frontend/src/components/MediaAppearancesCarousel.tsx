@@ -3,6 +3,19 @@ import MediaAppearanceItem from "./MediaAppearanceItem"
 import { useRef, useState, useEffect } from "react"
 import { IoChevronBack, IoChevronForward } from "react-icons/io5"
 import { MediaAppearanceItem as MediaAppearanceItemType } from "@/sanity/types/sanity.types"
+import { motion } from "framer-motion"
+
+const variants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { 
+        opacity: 1,
+        y: 0,
+        transition: {
+            duration: 0.5,
+            ease: "easeInOut"
+        }
+    },
+}
 
 export default function MediaAppearancesCarousel({ appearances }: { appearances: MediaAppearanceItemType[] }) {
     const scrollRef = useRef<HTMLDivElement>(null)
@@ -45,7 +58,13 @@ export default function MediaAppearancesCarousel({ appearances }: { appearances:
     }
 
     return (
-        <div className="relative">
+        <motion.div 
+            className="relative"
+            variants={variants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+        >
             <button
                 onClick={scrollLeft}
                 disabled={!canScrollLeft}
@@ -81,6 +100,6 @@ export default function MediaAppearancesCarousel({ appearances }: { appearances:
             >
                 <IoChevronForward size={24} />
             </button>
-        </div>
+        </motion.div>
     )
 }
