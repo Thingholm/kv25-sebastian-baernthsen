@@ -5,7 +5,8 @@ import { ExpandedKeyCase as ExpandedKeyCaseType } from "@/sanity/types/sanity.ty
 import Section from "../Section";
 import { PortableText } from "next-sanity";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 type Props = {
     section: ExpandedKeyCaseType;
@@ -54,12 +55,15 @@ const textVariants = {
 }
 
 export default function ExpandedKeyCase({ section }: Props) {
+    const containerRef = useRef(null);
+    const isInView = useInView(containerRef, { once: true, amount: 0.3 });
+
     return (
         <Section className="mb-8">
             <motion.div
+                ref={containerRef}
                 initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
+                animate={isInView ? "visible" : "hidden"}
             >  
                 <div className={`${section.imagePosition == "right" ? "md:flex-row" : "md:flex-row-reverse"} flex flex-col items-center text-center gap-x-8`}>
                     <motion.div

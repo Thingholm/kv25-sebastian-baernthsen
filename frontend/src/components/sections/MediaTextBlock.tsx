@@ -7,7 +7,8 @@ import Image from "next/image";
 import { urlFor } from "@/sanity/lib/urlFor";
 import SectionHeading from "../SectionHeading";
 import CustomPortableText from "../CustomPortableText";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 type Props = {
     section: MediaTextBlockType;
@@ -56,6 +57,9 @@ const imageVariants = {
 }
 
 export default function MediaTextBlock({ section }: Props) {
+    const containerRef = useRef(null);
+    const isInView = useInView(containerRef, { once: true, amount: 0.3 });
+
     const imageUrl = section.image?.asset?._ref && urlFor(section.image.asset._ref).url();
     const imageAlt = section.image?.alt ?? "";
     const imageWidth = imageUrl ? (parseInt(imageUrl.split("-")[1]?.split(".")[0].split("x")[0]) ?? 2000) : 2000;
@@ -85,9 +89,9 @@ export default function MediaTextBlock({ section }: Props) {
     return (
         <Section>
             <motion.div
+                ref={containerRef}
                 initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
+                animate={isInView ? "visible" : "hidden"}
                 className={`${imagePositionSectionVariants[section.imagePosition ?? "left"]} flex flex-col items-center`}
             >
                 {section.content &&

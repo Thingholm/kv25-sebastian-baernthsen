@@ -7,7 +7,8 @@ import { IoCallOutline, IoMailOutline } from "react-icons/io5";
 import Link from "next/link";
 import { formatPhoneNumber } from "@/lib/formatPhoneNumber";
 import SocialMediaLink from "../SocialMediaLink";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 type Props = {
     section: Contact,
@@ -27,12 +28,15 @@ const variants = {
 }
 
 export default function ContactContent({ section, socialMediaLinks }: Props) {
+    const containerRef = useRef(null);
+    const isInView = useInView(containerRef, { once: true, amount: 0.3 });
+
     return (
         <Section className="text-center">
             <motion.div
+                ref={containerRef}
                 initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
+                animate={isInView ? "visible" : "hidden"}
             >
                 <SectionHeading>{section.heading}</SectionHeading>
                 <motion.div 

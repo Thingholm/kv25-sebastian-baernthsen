@@ -3,13 +3,11 @@
 import { Form as FormType } from "@/sanity/types/sanity.types";
 import Section from "../../Section";
 import SectionHeading from "../../SectionHeading";
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useState, useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import Sending from "./Sending";
 import Error from "./Error";
-import Succes from "./Succes";
 import Sent from "./Succes";
-import { exit } from "process";
 
 type FormStatus = "None" | "Sending" | "Sent" | "Error";
 
@@ -46,6 +44,8 @@ const formVariants = {
 export default function Form({ section }: Props) {
     const [formData, setFormData] = useState(defaultFormData)
     const [status, setStatus] = useState<FormStatus>("None");
+    const formRef = useRef(null);
+    const isInView = useInView(formRef, { once: true, amount: 0.2 });
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setFormData(prev => ({...prev, [e.target.name]: e.target.value}))
@@ -79,13 +79,13 @@ export default function Form({ section }: Props) {
             }
             {status === "None" &&
                 <motion.form 
+                    ref={formRef}
                     onSubmit={handleSubmit} 
                     className="space-y-3"
                     variants={formVariants}
                     initial="hidden"
-                    whileInView="visible"
+                    animate={isInView ? "visible" : "hidden"}
                     exit="exit"
-                    viewport={{ once: true, amount: 0.2 }}
                 >
                     <div>
                         <label 

@@ -6,7 +6,8 @@ import Image from "next/image";
 import { urlFor } from "@/sanity/lib/urlFor";
 import Button from "../Button";
 import SectionHeading from "../SectionHeading";
-import { delay, motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 type Props = {
     section: KeyCasesType;
@@ -30,14 +31,17 @@ const itemVariants = {
 };
 
 export default function KeyCases({ section }: Props) {
+    const containerRef = useRef(null);
+    const isInView = useInView(containerRef, { once: true, amount: 0.2 });
+
     return (
         <Section className="bg-venstre-blue-700 text-white text-center pb-12 pt-8">
             <SectionHeading>{section.heading}</SectionHeading>
             <motion.div 
+                ref={containerRef}
                 className=" flex-wrap justify-around mb-8 sm:flex"
                 initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
+                animate={isInView ? "visible" : "hidden"}
             >
                 {section.cases?.map((caseItem, index) => (
                     <motion.div 

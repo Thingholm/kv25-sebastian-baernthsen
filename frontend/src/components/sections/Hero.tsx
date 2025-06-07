@@ -5,7 +5,8 @@ import Image from "next/image"
 import { urlFor } from "@/sanity/lib/urlFor"
 import { PortableText } from "next-sanity"
 import Button from "../Button"
-import { motion } from "framer-motion"
+import { motion, useInView } from "framer-motion"
+import { useRef } from "react"
 
 type Props = {
     section: HeroType
@@ -35,15 +36,20 @@ const textVariants = {
 }
 
 export default function Hero({ section }: Props) {
+    const containerRef = useRef(null)
+    const textRef = useRef(null)
+    const containerInView = useInView(containerRef, { once: true, amount: 0.2 })
+    const textInView = useInView(textRef, { once: true, amount: 0.2 })
+
     return (
         <section className="h-[calc(100vh-53px)]">
             {section.image?.asset?._ref && 
                 <motion.div 
+                    ref={containerRef}
                     className="relative h-full overflow-hidden"
                     variants={containerVariants}
                     initial="hidden"
-                    whileInView={"visible"}
-                    viewport={{ once: true, amount: 0.2 }}
+                    animate={containerInView ? "visible" : "hidden"}
                 >
                     <Image
                         src={urlFor(section.image?.asset?._ref).url()}
@@ -55,11 +61,11 @@ export default function Hero({ section }: Props) {
                 </motion.div>
             }
             <motion.div 
+                ref={textRef}
                 className="absolute text-white top-[55%] md:w-3/4 z-10 px-4 md:px-18 lg:px-30"
                 variants={textVariants}
                 initial="hidden"
-                whileInView={"visible"}
-                viewport={{ once: true, amount: 0.2 }}
+                animate={textInView ? "visible" : "hidden"}
             >
                 <h1 className="text-orange-500 text-6xl font-bold tracking-wide text-wrap text-shadow-lg mb-2">{section.heading}</h1>
                 {section.text && <PortableText value={section.text}/>}

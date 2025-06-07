@@ -3,7 +3,7 @@ import MediaAppearanceItem from "./MediaAppearanceItem"
 import { useRef, useState, useEffect } from "react"
 import { IoChevronBack, IoChevronForward } from "react-icons/io5"
 import { MediaAppearanceItem as MediaAppearanceItemType } from "@/sanity/types/sanity.types"
-import { motion } from "framer-motion"
+import { motion, useInView } from "framer-motion"
 
 const variants = {
     hidden: { opacity: 0, y: 40 },
@@ -19,6 +19,8 @@ const variants = {
 
 export default function MediaAppearancesCarousel({ appearances }: { appearances: MediaAppearanceItemType[] }) {
     const scrollRef = useRef<HTMLDivElement>(null)
+    const containerRef = useRef(null)
+    const isInView = useInView(containerRef, { once: true, amount: 0.2 })
     const [canScrollLeft, setCanScrollLeft] = useState(false)
     const [canScrollRight, setCanScrollRight] = useState(true)
 
@@ -59,11 +61,11 @@ export default function MediaAppearancesCarousel({ appearances }: { appearances:
 
     return (
         <motion.div 
+            ref={containerRef}
             className="relative"
             variants={variants}
             initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
+            animate={isInView ? "visible" : "hidden"}
         >
             <button
                 onClick={scrollLeft}
