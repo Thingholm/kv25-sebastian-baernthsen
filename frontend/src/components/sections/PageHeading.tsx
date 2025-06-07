@@ -1,6 +1,4 @@
-import { urlFor } from "@/sanity/lib/urlFor"
 import { PageHeading as PageHeadingType } from "@/sanity/types/sanity.types"
-import Image from "next/image"
 
 type Props = {
     section: PageHeadingType

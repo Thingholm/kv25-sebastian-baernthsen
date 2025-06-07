@@ -1,15 +1,15 @@
 "use client";
 
-import { Page } from "@/sanity/types/sanity.types";
+import { MenuItem } from "@/sanity/types/sanity.types";
 import Link from "next/link";
 import { useState } from "react";
 import { IoCloseOutline, IoMenuOutline } from "react-icons/io5";
 
 type Props = {
-    pages: Page[];
+    menu: MenuItem[];
 }
 
-export default function MobileNav({ pages }: Props) {
+export default function MobileNav({ menu }: Props) {
     const [showNav, setShowNav] = useState(false);
 
     return (
@@ -36,14 +36,14 @@ export default function MobileNav({ pages }: Props) {
                     <IoCloseOutline size={42}/>
                 </button>
                 <nav className="mt-16 flex flex-col">
-                    {pages?.map((menuItem, index) => (
+                    {menu?.map((menuItem, index) => (
                         <Link
                             key={index}
-                            href={`/${menuItem.slug?.current}`}
+                            href={`/${menuItem.menuItemUrl?.internalLink?.slug?.current}`}
                             className={`${index == 0 ? "border-t-[1px]" : ""} border-b-[1px] border-venstre-blue-600 pl-4 pr-20 py-2`}
                             onClick={() => setShowNav(false)}
                         >
-                            {menuItem.name}
+                            {menuItem.text}
                         </Link>
                     ))}
                 </nav>

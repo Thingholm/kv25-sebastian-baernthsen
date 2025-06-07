@@ -21,7 +21,7 @@ export default async function Footer() {
                     <div className="mt-4 flex flex-col">
                         {settings.menu.map((menuItem: MenuItem, index: number) => (
                             <Link
-                                href={(menuItem.menuItemUrl?.linkType == "external" ? menuItem.menuItemUrl.externalUrl : menuItem.menuItemUrl?.internalLink?._ref) ?? "#"}
+                                href={(menuItem.menuItemUrl?.linkType == "external" ? menuItem.menuItemUrl.externalUrl : `/${menuItem.menuItemUrl?.internalLink?.slug?.current ?? ""}`) ?? "#"}
                                 key={index}
                                 className="hover:text-orange-500 duration-150"
                             >

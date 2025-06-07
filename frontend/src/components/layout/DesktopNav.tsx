@@ -1,15 +1,14 @@
 "use client";
 
-import { MenuItem, Page, Settings } from "@/sanity/types/sanity.types";
+import { MenuItem } from "@/sanity/types/sanity.types";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 type Props = {
-    pages: Page[];
     menu: MenuItem[];
 }
 
-export default function DesktopNav({ pages, menu }: Props) {
+export default function DesktopNav({ menu }: Props) {
     const pathname = usePathname();
     const currentSlug = pathname === "/" ? "" : pathname.slice(1);
 

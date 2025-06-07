@@ -1,11 +1,10 @@
 import { PortableText } from '@portabletext/react';
 import type { PortableTextBlock } from '@portabletext/types';
+import type { PortableTextComponents } from '@portabletext/react';
 
-const components = {
+const components: PortableTextComponents = {
     block: {
-        normal: ({ children }: any) => (
-            <p className="mb-4">{children}</p>
-        ),
+        normal: ({ children }) => <p className="mb-4">{children}</p>,
     },
 };
 

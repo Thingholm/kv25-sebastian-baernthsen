@@ -561,10 +561,10 @@ export type Link = {
   _type: 'link'
   linkType?: 'internal' | 'external'
   internalLink?: {
-    _ref: string
-    _type: 'reference'
-    _weak?: boolean
-    [internalGroqTypeReferenceTo]?: 'page'
+    _id: string
+    slug?: {
+      current?: string
+    }
   }
   externalUrl?: string
 }

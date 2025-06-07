@@ -4,7 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import MobileNav from "./MobileNav";
 import DesktopNav from "./DesktopNav";
-import { getPages } from "@/lib/queries/getPages";
 
 const SETTINGS_QUERY = defineQuery(`
     *[_type == "settings"]{ 
@@ -28,8 +27,6 @@ const SETTINGS_QUERY = defineQuery(`
 `);
 
 export default async function Header() {
-    const pages = await getPages();
-
     const { data: settings } = await sanityFetch({
         query: SETTINGS_QUERY,
         params: {}
@@ -54,8 +51,8 @@ export default async function Header() {
                 </div>
             </Link>
 
-           <MobileNav pages={pages}/>
-           <DesktopNav pages={pages} menu={settings.menu}/>
+           <MobileNav menu={settings.menu}/>
+           <DesktopNav menu={settings.menu}/>
         </header>
     )
 }

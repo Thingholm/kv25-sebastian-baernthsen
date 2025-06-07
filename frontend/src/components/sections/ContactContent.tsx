@@ -12,7 +12,7 @@ import { useRef } from "react";
 
 type Props = {
     section: Contact,
-    socialMediaLinks: any | Settings
+    socialMediaLinks: Settings
 }
 
 const variants = {
@@ -75,10 +75,10 @@ export default function ContactContent({ section, socialMediaLinks }: Props) {
                         className="flex flex-wrap justify-center pt-8"
                         variants={variants}
                     >
-                        {Object.keys(socialMediaLinks.socialMediaLinks).map(media => (
+                        {socialMediaLinks.socialMediaLinks && Object.keys(socialMediaLinks.socialMediaLinks).map(media => (
                             <SocialMediaLink
-                                media={media}
-                                url={socialMediaLinks.socialMediaLinks[media]}
+                                media={media as keyof typeof socialMediaLinks.socialMediaLinks}
+                                url={socialMediaLinks.socialMediaLinks?.[media as keyof typeof socialMediaLinks.socialMediaLinks] ?? ''}
                                 key={media}
                                 iconClassName="h-6 w-6"
                                 className="px-2 py-2"

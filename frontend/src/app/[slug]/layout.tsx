@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import { client } from "@/sanity/client";
 import { pageSeoQuery } from "@/sanity/queries";
 
-type Props = {
-  params: { slug: string };
-};
+type PageParams = {
+  slug: string;
+}
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const slug = await params.slug;
+export async function generateMetadata({ params }: { params: Promise<PageParams> }): Promise<Metadata> {
+  const slug = (await params).slug;
   const seo = await getSeoData(slug);
 
   return {
