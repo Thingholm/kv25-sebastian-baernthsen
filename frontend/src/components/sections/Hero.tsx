@@ -54,6 +54,9 @@ export default function Hero({ section }: Props) {
                     <Image
                         src={urlFor(section.image?.asset?._ref).url()}
                         alt={section.image.alt ?? ""}
+                        priority={true}
+                        placeholder="blur"
+                        blurDataURL={urlFor(section.image?.asset?._ref).url()}
                         fill
                         className="object-cover"
                     />
