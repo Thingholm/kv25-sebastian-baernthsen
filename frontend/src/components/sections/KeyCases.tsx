@@ -17,11 +17,11 @@ type Props = {
 const itemVariants = {
     hidden: { 
         opacity: 0, 
-        x: -20 
+        x: -30 
     },
     visible: (index: number) => ({ 
         opacity: 1,
-        y: 0,
+        x: 0,
         transition: {
             duration: 0.5,
             ease: "easeInOut",
@@ -39,7 +39,7 @@ export default function KeyCases({ section }: Props) {
             <SectionHeading>{section.heading}</SectionHeading>
             <motion.div 
                 ref={containerRef}
-                className=" flex-wrap justify-around mb-8 sm:flex"
+                className="flex-wrap justify-around mb-8 sm:flex"
                 initial="hidden"
                 animate={isInView ? "visible" : "hidden"}
             >
