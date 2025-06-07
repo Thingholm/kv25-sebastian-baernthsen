@@ -15,6 +15,12 @@ export default defineType({
             type: "string",
         }),
         defineField({
+            name: "subtitle",
+            description: "Subtitle of website",
+            title: "Subtitle",
+            type: "string",
+        }),
+        defineField({
             name: "menu",
             type: "array",
             of: [{ type: "menuItem" }],
