@@ -23,6 +23,21 @@ const PAGE_QUERY = `*[_type == "page" && slug.current == $slug][0] {
           "slug": slug
         }
       }
+    },
+    button {
+      _key,
+      _type,
+      text,
+      variant,
+      "link": link {
+        _type,
+        linkType,
+        externalUrl,
+        "internalLink": internalLink-> {
+          _id,
+          "slug": slug
+        }
+      }
     }
   }
 }`;

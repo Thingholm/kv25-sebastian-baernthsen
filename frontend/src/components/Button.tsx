@@ -17,7 +17,7 @@ export default function Button({ buttonProps, className }: Props) {
     return (
         <Link 
             href={buttonProps.link?.linkType === "internal" 
-                ? `/${buttonProps.link.internalLink?._id ? buttonProps.link.internalLink.slug?.current : ""}`
+                ? `/${buttonProps.link.internalLink?.slug?.current ?? ""}`
                 : buttonProps.link?.externalUrl ?? "/"
             }
             className={`${className} ${variants[buttonProps.variant ?? "default"]} px-4 py-2 rounded font-medium transition duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2`}

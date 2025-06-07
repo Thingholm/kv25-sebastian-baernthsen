@@ -23,6 +23,21 @@ const HOMEPAGE_QUERY = defineQuery(`*[_type == "homePage"][0] {
           "slug": slug
         }
       }
+    },
+    button {
+      _key,
+      _type,
+      text,
+      variant,
+      "link": link {
+        _type,
+        linkType,
+        externalUrl,
+        "internalLink": internalLink-> {
+          _id,
+          "slug": slug
+        }
+      }
     }
   }
 }`)
