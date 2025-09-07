@@ -1030,6 +1030,13 @@
             "name": "button"
           },
           "optional": true
+        },
+        "darkBackground": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "boolean"
+          },
+          "optional": true
         }
       }
     }

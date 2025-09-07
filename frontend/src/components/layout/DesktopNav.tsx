@@ -13,7 +13,7 @@ export default function DesktopNav({ menu }: Props) {
     const currentSlug = pathname === "/" ? "" : pathname.slice(1);
 
     return (
-        <div className="lg:flex items-center hidden space-x-8">
+        <div className="text-[14.5px] xl:text-base lg:flex items-center hidden space-x-5 xl:space-x-8">
             {menu?.map((menuItem, index) => (
                 <div 
                     className="group relative"                         

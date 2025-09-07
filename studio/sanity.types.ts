@@ -189,6 +189,7 @@ export type KeyCases = {
     } & KeyCase
   >
   button?: Button
+  darkBackground?: boolean
 }
 
 export type MediaTextBlock = {

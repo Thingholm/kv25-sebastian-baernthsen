@@ -20,5 +20,9 @@ export default defineType({
             name: "button",
             type: "button",
         }),
+        defineField({
+            name: "darkBackground",
+            type: "boolean",
+        })
     ]
 })

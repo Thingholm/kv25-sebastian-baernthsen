@@ -35,7 +35,7 @@ export default function KeyCases({ section }: Props) {
     const isInView = useInView(containerRef, { once: true, amount: 0.2 });
 
     return (
-        <Section className="bg-venstre-blue-700 text-white text-center pb-12 pt-8">
+        <Section className={`text-center pb-12 pt-8 ${section.darkBackground ? 'bg-venstre-blue-700 text-white' : 'bg-gray-100'}`}>
             <SectionHeading>{section.heading}</SectionHeading>
             <motion.div 
                 ref={containerRef}
@@ -56,7 +56,7 @@ export default function KeyCases({ section }: Props) {
                                 alt={caseItem.icon.alt ?? ""}
                                 height={70}
                                 width={70}
-                                style={{ filter: "invert(1)" }}
+                                style={section.darkBackground ? { filter: "invert(1)" } : {}}
                                 className="mb-2"
                             />
                         }
