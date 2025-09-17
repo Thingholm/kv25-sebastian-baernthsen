@@ -7,6 +7,7 @@ import form from "../objects/sections/form";
 import mediaAppearances from "../objects/sections/mediaAppearancesSection";
 import pageHeading from "../objects/sections/pageHeading";
 import expandedKeyCase from "../objects/sections/expandedKeyCase";
+import libsynEmbedSection from "../objects/sections/libsynEmbedSection";
 
 const pageSectionsObjects = [
     hero,
@@ -16,7 +17,8 @@ const pageSectionsObjects = [
     form,
     mediaAppearances,
     pageHeading,
-    expandedKeyCase
+    expandedKeyCase,
+    libsynEmbedSection
 ];
 
 export default defineField({

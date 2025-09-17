@@ -58,6 +58,9 @@ export type HomePage = {
     | ({
         _key: string
       } & ExpandedKeyCase)
+    | ({
+        _key: string
+      } & LibsynEmbedSection)
   >
   seoMetaFields?: SeoMetaFields
 }
@@ -85,6 +88,46 @@ export type Settings = {
   }
   phone?: string
   email?: string
+}
+
+export type LibsynEmbedSection = {
+  _type: 'libsynEmbedSection'
+  heading?: string
+  content?: Array<
+    | {
+        children?: Array<{
+          marks?: Array<string>
+          text?: string
+          _type: 'span'
+          _key: string
+        }>
+        style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote'
+        listItem?: 'bullet' | 'number'
+        markDefs?: Array<{
+          customLink?: Link
+          _type: 'customLink'
+          _key: string
+        }>
+        level?: number
+        _type: 'block'
+        _key: string
+      }
+    | {
+        asset?: {
+          _ref: string
+          _type: 'reference'
+          _weak?: boolean
+          [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+        }
+        media?: unknown
+        hotspot?: SanityImageHotspot
+        crop?: SanityImageCrop
+        alt?: string
+        _type: 'image'
+        _key: string
+      }
+  >
+  embedLink?: string
 }
 
 export type ExpandedKeyCase = {
@@ -452,6 +495,9 @@ export type Page = {
     | ({
         _key: string
       } & ExpandedKeyCase)
+    | ({
+        _key: string
+      } & LibsynEmbedSection)
   >
   seoMetaFields?: SeoMetaFields
 }
@@ -610,6 +656,7 @@ export type AllSanitySchemaTypes =
   | MediaAppearances
   | HomePage
   | Settings
+  | LibsynEmbedSection
   | ExpandedKeyCase
   | PageHeading
   | MediaAppearancesSection

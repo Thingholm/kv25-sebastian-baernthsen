@@ -18,6 +18,7 @@ import mediaAppearances from "./singletons/mediaAppearances";
 import settings from "./singletons/settings";
 import seoMetaFields from "./objects/seo/seo";
 import openGraph from "./objects/seo/openGraph";
+import libsynEmbedSection from "./objects/sections/libsynEmbedSection";
 
 export const schemaTypes = [
     // documents
@@ -42,6 +43,7 @@ export const schemaTypes = [
     mediaAppearancesSection,
     pageHeading,
     expandedKeyCase,
+    libsynEmbedSection,
 
     // singletons
     settings,

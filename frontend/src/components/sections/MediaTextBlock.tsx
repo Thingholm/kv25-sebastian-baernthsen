@@ -101,7 +101,7 @@ export default function MediaTextBlock({ section }: Props) {
                     custom={section.imagePosition}
                 >
                     {section.heading && 
-                        <SectionHeading className="mb-6">{section.heading}</SectionHeading>
+                        <SectionHeading className="mb-4">{section.heading}</SectionHeading>
                     }
                     {section.content && 
                         <CustomPortableText value={section.content as SanityPortableText}/>

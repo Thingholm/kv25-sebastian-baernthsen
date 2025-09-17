@@ -73,7 +73,7 @@ export default function MediaAppearancesCarousel({ appearances }: { appearances:
                 className={`hidden sm:block absolute left-3 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full shadow-lg transition-all duration-200 hover:cursor-pointer ${
                     canScrollLeft 
                         ? 'bg-white hover:bg-gray-50 text-gray-800 hover:shadow-xl' 
-                        : 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                        : 'bg-gray-200 text-gray-400 cursor-not-allowed sm:hidden'
                 }`}
                 aria-label="Scroll left"
             >
@@ -96,7 +96,7 @@ export default function MediaAppearancesCarousel({ appearances }: { appearances:
                 className={`hidden sm:block absolute right-3 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full shadow-lg transition-all duration-200 hover:cursor-pointer ${
                     canScrollRight 
                         ? 'bg-white hover:bg-gray-50 text-gray-800 hover:shadow-xl' 
-                        : 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                        : 'bg-gray-200 text-gray-400 cursor-not-allowed sm:hidden'
                 }`}
                 aria-label="Scroll right"
             >
