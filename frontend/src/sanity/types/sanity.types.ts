@@ -529,6 +529,10 @@ export type Link = {
     _ref: string
     _type: 'reference'
     _weak?: boolean
+    slug?: {
+      _type: 'slug'
+      current: string
+    }
     [internalGroqTypeReferenceTo]?: 'page'
   }
   externalUrl?: string

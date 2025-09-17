@@ -33,7 +33,7 @@ export default function PageBuilder({ sections }: Props) {
         <>
             {sections.map((section, index) => {
                 const SectionComponent = sectionComponentsMap[section._type];
-                console.log(section._type)
+                
                 if (SectionComponent) {
                     return (
                         <SectionComponent section={section} key={index}/>
