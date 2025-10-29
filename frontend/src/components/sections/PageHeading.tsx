@@ -4,6 +4,8 @@ type Props = {
     section: PageHeadingType
 }
 
+export const revalidate = 60;
+
 export default async function PageHeading({ section }: Props) {
     return (
         <section>

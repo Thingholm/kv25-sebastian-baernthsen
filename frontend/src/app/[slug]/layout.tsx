@@ -6,6 +6,8 @@ type PageParams = {
   slug: string;
 }
 
+export const revalidate = 60;
+
 export async function generateMetadata({ params }: { params: Promise<PageParams> }): Promise<Metadata> {
   const slug = (await params).slug;
   const seo = await getSeoData(slug);

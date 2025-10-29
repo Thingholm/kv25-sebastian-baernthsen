@@ -7,6 +7,8 @@ import SocialMediaLink from "../SocialMediaLink"
 
 const SETTINGS_QUERY = defineQuery(`*[_type == "settings"]{ _id, title, menu, socialMediaLinks, phone, email }[0]`)
 
+export const revalidate = 60;
+
 export default async function Footer() {
     const { data: settings } = await sanityFetch({
         query: SETTINGS_QUERY,

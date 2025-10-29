@@ -24,6 +24,8 @@ type Props = {
     sections: PageSection[]
 }
 
+export const revalidate = 60;
+
 export default function PageBuilder({ sections }: Props) {
     if (!sections || sections.length === 0) {
         return null;

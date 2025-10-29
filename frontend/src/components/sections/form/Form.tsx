@@ -41,6 +41,8 @@ const formVariants = {
     }
 }
 
+export const revalidate = 60;
+
 export default function Form({ section }: Props) {
     const [formData, setFormData] = useState(defaultFormData)
     const [status, setStatus] = useState<FormStatus>("None");

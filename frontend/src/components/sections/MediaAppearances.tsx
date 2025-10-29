@@ -10,6 +10,8 @@ type Props = {
     section: MediaAppearancesSection
 }
 
+export const revalidate = 60;
+
 export default async function MediaAppearances({ section }: Props) {
     const MediaAppearances = await getMediaAppearances();
     

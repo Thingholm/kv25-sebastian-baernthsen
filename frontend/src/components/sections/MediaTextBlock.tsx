@@ -56,6 +56,8 @@ const imageVariants = {
     }
 }
 
+export const revalidate = 60;
+
 export default function MediaTextBlock({ section }: Props) {
     const containerRef = useRef(null);
     const isInView = useInView(containerRef, { once: true, amount: 0.3 });

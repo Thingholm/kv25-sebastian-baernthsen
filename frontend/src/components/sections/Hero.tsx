@@ -35,6 +35,8 @@ const textVariants = {
     }
 }
 
+export const revalidate = 60;
+
 export default function Hero({ section }: Props) {
     const containerRef = useRef(null)
     const textRef = useRef(null)

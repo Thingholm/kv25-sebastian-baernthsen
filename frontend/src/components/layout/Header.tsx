@@ -26,6 +26,8 @@ const SETTINGS_QUERY = defineQuery(`
     }[0]
 `);
 
+export const revalidate = 60;
+
 export default async function Header() {
     const { data: settings } = await sanityFetch({
         query: SETTINGS_QUERY,

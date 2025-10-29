@@ -6,6 +6,8 @@ type Props = {
     section: ContactType
 }
 
+export const revalidate = 60;
+
 export default async function Contact({ section }: Props) {
     const socialMediaLinks = await getSocialMediaLinks();
 

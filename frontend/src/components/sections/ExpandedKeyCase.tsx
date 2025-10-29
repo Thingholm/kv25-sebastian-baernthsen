@@ -54,6 +54,8 @@ const textVariants = {
     }
 }
 
+export const revalidate = 60;
+
 export default function ExpandedKeyCase({ section }: Props) {
     const containerRef = useRef(null);
     const isInView = useInView(containerRef, { once: true, amount: 0.3 });

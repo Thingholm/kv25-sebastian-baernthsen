@@ -42,6 +42,8 @@ const PAGE_QUERY = `*[_type == "page" && slug.current == $slug][0] {
   }
 }`;
 
+export const revalidate = 60;
+
 export default async function PostPage({
   params,
 }: {

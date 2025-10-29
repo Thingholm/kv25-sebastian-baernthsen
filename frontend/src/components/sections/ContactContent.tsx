@@ -27,6 +27,8 @@ const variants = {
     }
 }
 
+export const revalidate = 60;
+
 export default function ContactContent({ section, socialMediaLinks }: Props) {
     const containerRef = useRef(null);
     const isInView = useInView(containerRef, { once: true, amount: 0.3 });

@@ -30,6 +30,8 @@ const itemVariants = {
     })
 };
 
+export const revalidate = 60;
+
 export default function KeyCases({ section }: Props) {
     const containerRef = useRef(null);
     const isInView = useInView(containerRef, { once: true, amount: 0.2 });
